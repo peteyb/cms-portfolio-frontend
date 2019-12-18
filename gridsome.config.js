@@ -6,14 +6,14 @@
 
 module.exports = {
   siteName: 'Portfolio 2020',
-  siteUrl: 'http://cms-portfolio-backend.herokuapp.com',
+  siteUrl: 'https://cms-portfolio-backend.herokuapp.com',
   host: 'cms-portfolio-backend.herokuapp.com',
   port: 5200,
   plugins: [
     {
       use: '@gridsome/source-graphql',
       options: {
-        url: 'http://cms-portfolio-backend.herokuapp.com/graphql',
+        url: 'https://cms-portfolio-backend.herokuapp.com/graphql',
         fieldName: 'wagtail',
         typeName: 'wagtailTypes',
 
