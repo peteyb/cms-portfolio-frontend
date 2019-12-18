@@ -8,7 +8,7 @@ module.exports = {
   siteName: 'Portfolio 2020',
   siteUrl: 'https://cms-portfolio-backend.herokuapp.com',
   host: 'cms-portfolio-backend.herokuapp.com',
-  port: 5200,
+  port: 80,
   plugins: [
     {
       use: '@gridsome/source-graphql',
