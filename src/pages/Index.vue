@@ -11,9 +11,11 @@
     </p>
 
     <p class="home-links">
-      <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
-      <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
+      <g-link to="/" class="button--grey">Home page</g-link>
+      <g-link to="/posts/" class="button--grey">Posts page</g-link>
+      <g-link to="/posts/5/" class="button--grey">Post 5</g-link>
     </p>
+    
 
   </Layout>
 </template>

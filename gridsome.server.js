@@ -4,6 +4,7 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
+const axios = require('axios')
 
 module.exports = function (api) {
   api.loadSource(({ addCollection }) => {
@@ -12,5 +13,30 @@ module.exports = function (api) {
 
   api.createPages(({ createPage }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api/
+  })
+
+  api.createManagedPages(async ({ createPage }) => {
+    const { data } = await axios.get(`${process.env.GRIDSOME_WAGTAIL_URL}/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra`)
+
+    createPage({
+      path: `/posts`,
+      component: './src/templates/Blog.vue',
+      context: {
+        items: data.items,
+        meta: data.meta
+      }
+    })
+
+    data.items.forEach(item => {
+      createPage({
+        path: `/posts/${item.id}`,
+        component: './src/templates/Post.vue',
+        context: {
+          title: item.title,
+          body: item.body,
+          extra: item.extra
+        }
+      })
+    })
   })
 }
