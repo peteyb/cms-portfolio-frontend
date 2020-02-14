@@ -6,6 +6,16 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 const axios = require('axios')
 
+const authApi = axios.create({
+  baseURL: `${process.env.GRIDSOME_WAGTAIL_URL}`,
+  withCredentials: false,
+  headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${process.env.GRIDSOME_WAGTAIL_TOKEN}`,
+  }
+})
+
 module.exports = function (api) {
   api.loadSource(({ addCollection }) => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
@@ -16,7 +26,7 @@ module.exports = function (api) {
   })
 
   api.createManagedPages(async ({ createPage }) => {
-    const { data } = await axios.get(`${process.env.GRIDSOME_WAGTAIL_URL}/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra`)
+    const { data } = await authApi.get(`/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra`)
 
     createPage({
       path: `/posts`,
