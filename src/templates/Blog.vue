@@ -10,12 +10,7 @@
     <div v-for="post in $context.items" :key="post.id">
       <h2>{{ post.title }}</h2>
       <span v-html="post.body"></span>
-
-      <div v-for="item in post.extra" :key="item.id">
-        <h1 v-if="item.type == 'heading'">{{ item.value }}</h1>
-        <span v-if="item.type == 'paragraph'" v-html="item.value"></span>
-        <img v-if="item.type == 'image'" :src="item.value.file" />
-      </div>
+      <g-link :to="`/posts/${post.id}/`" class="button--grey">View details</g-link>
     </div>
   </Layout>
 </template>
