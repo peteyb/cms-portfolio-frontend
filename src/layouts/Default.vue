@@ -9,6 +9,7 @@
         <g-link class="nav__link" to="/about/">About</g-link>
       </nav>
     </header>
+    <PostSearch />
     <slot/>
   </div>
 </template>
@@ -21,7 +22,17 @@ query {
 }
 </static-query>
 
-<style>
+<script>
+import PostSearch from '@/components/PostSearch.vue';
+
+export default {
+  components: {
+    PostSearch
+  }
+}
+</script>
+
+<style lang="scss">
 body {
   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   margin:0;
@@ -40,9 +51,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
+  margin-bottom: 10px;
+  height: 40px;
 }
+
 
 .nav__link {
   margin-left: 20px;
