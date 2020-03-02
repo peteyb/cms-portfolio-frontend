@@ -58,7 +58,6 @@ export default {
   },
   methods: {
     select() {
-      console.log(this.form.selectedPost)
       if (this.form.selectedPost) {
         this.$router.push({ path: `/posts/${this.form.selectedPost.id}` })
         this.clearForm()
