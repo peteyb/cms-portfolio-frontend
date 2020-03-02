@@ -22,5 +22,11 @@ module.exports = {
         },
       },
     },
+    {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: `${process.env.GRIDSOME_GA_CODE}`
+      }
+    }
   ]
 }
