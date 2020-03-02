@@ -1,9 +1,9 @@
 <template>
   <Layout>
     <p class="home-links">
-      <g-link to="/" class="button--grey">Home page</g-link>
-      <g-link to="/posts/" class="button--grey">Posts page</g-link>
-      <g-link to="/posts/5/" class="button--grey">Post 5</g-link>
+      <g-link to="/" class="btn btn-primary button--grey">Home page</g-link>
+      <g-link to="/posts/" class="btn btn-primary button--grey">Posts page</g-link>
+      <g-link to="/posts/5/" class="btn btn-primary button--grey">Post 5</g-link>
     </p>
 
     <h1>Blog posts</h1>
@@ -14,3 +14,11 @@
     </div>
   </Layout>
 </template>
+
+<style lang="scss">
+.button--grey {
+  color: orangered;
+}
+</style>
+
+// todo - load db content via api on published pages
