@@ -33,7 +33,8 @@ module.exports = function (api) {
       component: './src/templates/Blog.vue',
       context: {
         items: data.items,
-        meta: data.meta
+        meta: data.meta,
+        cloudName: process.env.CLOUDINARY_NAME
       }
     })
 
@@ -44,7 +45,8 @@ module.exports = function (api) {
         context: {
           title: item.title,
           body: item.body,
-          extra: item.extra
+          extra: item.extra,
+          cloudName: process.env.CLOUDINARY_NAME
         }
       })
     })

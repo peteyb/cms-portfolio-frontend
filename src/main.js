@@ -4,6 +4,7 @@
 import Vuex from 'vuex'
 import vSelect from 'vue-select'
 import BootstrapVue from 'bootstrap-vue'
+import Cloudinary from 'cloudinary-vue';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -21,5 +22,13 @@ export default function (Vue, { router, head, isClient, appOptions }) {
 
   Vue.component('Layout', DefaultLayout)
   Vue.component('v-select', vSelect)
+
   Vue.use(BootstrapVue)
+  Vue.use(Cloudinary, {
+    configuration: {
+      cloudName: process.env.CLOUDINARY_NAME,
+      apiKey: process.env.CLOUDINARY_KEY,
+      apiSecret: process.env.CLOUDINARY_SECRET,
+    }
+  });
 }
