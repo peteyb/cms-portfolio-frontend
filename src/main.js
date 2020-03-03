@@ -29,6 +29,7 @@ export default function (Vue, { router, head, isClient, appOptions }) {
       cloudName: process.env.CLOUDINARY_NAME,
       apiKey: process.env.CLOUDINARY_KEY,
       apiSecret: process.env.CLOUDINARY_SECRET,
+      secure: true
     }
   });
 }
