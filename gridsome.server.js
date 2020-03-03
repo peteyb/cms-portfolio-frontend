@@ -16,6 +16,37 @@ const authApi = axios.create({
   }
 })
 
+const getAll = async (url) => {
+  let items = []
+  let keepGoing = true
+  let offset = 0
+  let limit = 20
+  let payload = {}
+  while (keepGoing) {
+    // get data
+    payload = {
+      params: {
+        offset: offset,
+        limit: limit
+      }
+    }
+    let { data } = await authApi.get(url, payload)
+
+    // exit if no more items
+    if (data.items.length == 0) {
+      keepGoing = false
+      return {
+        meta: data.meta,
+        items: items
+      }
+    }
+
+    // push items
+    await items.push.apply(items, data.items)
+    offset += 20
+  }
+}
+
 module.exports = function (api) {
   api.loadSource(({ addCollection }) => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
@@ -26,7 +57,7 @@ module.exports = function (api) {
   })
 
   api.createManagedPages(async ({ createPage }) => {
-    const { data } = await authApi.get(`/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra,slug`)
+    const data = await getAll(`/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra,slug`)
 
     createPage({
       path: `/posts`,
