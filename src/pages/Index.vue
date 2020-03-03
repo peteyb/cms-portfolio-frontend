@@ -13,7 +13,6 @@
     <p class="home-links">
       <g-link to="/" class="button--grey">Home page</g-link>
       <g-link to="/posts/" class="button--grey">Posts page</g-link>
-      <g-link to="/posts/5/" class="button--grey">Post 5</g-link>
     </p>
 
   </Layout>
@@ -26,9 +25,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.home-links a {
-  margin-right: 1rem;
-}
-</style>

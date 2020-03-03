@@ -3,7 +3,6 @@
     <p class="home-links">
       <g-link to="/" class="button--grey">Home page</g-link>
       <g-link to="/posts/" class="button--grey">Posts page</g-link>
-      <g-link to="/posts/7/" class="button--grey">Post 7</g-link>
     </p>
 
     <h1>{{ $context.title }}</h1>

@@ -26,7 +26,7 @@ module.exports = function (api) {
   })
 
   api.createManagedPages(async ({ createPage }) => {
-    const { data } = await authApi.get(`/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra`)
+    const { data } = await authApi.get(`/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra,slug`)
 
     createPage({
       path: `/posts`,
@@ -40,7 +40,7 @@ module.exports = function (api) {
 
     data.items.forEach(item => {
       createPage({
-        path: `/posts/${item.id}`,
+        path: `/posts/${item.meta.slug}`,
         component: './src/templates/Post.vue',
         context: {
           title: item.title,

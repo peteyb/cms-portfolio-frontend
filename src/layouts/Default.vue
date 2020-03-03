@@ -55,6 +55,9 @@ body {
   height: 40px;
 }
 
+.home-links a {
+  margin-right: 1rem;
+}
 
 .nav__link {
   margin-left: 20px;

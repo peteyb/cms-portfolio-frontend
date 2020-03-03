@@ -19,10 +19,10 @@ const mutations = {
 	[GET_PICKER_LIST_ASYNC.FAILURE] (state, error) {
 		Vue.set(state, [GET_PICKER_LIST_ASYNC.errorKey], error)
 	},
-	clearPostPicker(state, id) {
-		if (id) {
+	clearPostPicker(state, slug) {
+		if (slug) {
 			state.picker_list = state.picker_list.filter(x => {
-				return x.id == id;
+				return x.meta.slug == slug;
 			})
 		} else {
 			state.picker_list = []
@@ -34,7 +34,7 @@ const actions = {
 	async fetchPosts({commit}, payload) {
 		let params = {
 			type: 'blog.BlogPage',
-			fields: '_,id,title',
+			fields: '_,slug,title',
 			search: payload.query
 		}
 		// change to getAll if more than 10 results required in display

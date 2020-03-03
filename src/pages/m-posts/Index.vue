@@ -3,7 +3,6 @@
     <p class="home-links">
       <g-link to="/" class="button--grey">Home page</g-link>
       <g-link to="/posts/" class="button--grey">Posts page</g-link>
-      <g-link to="/posts/5/" class="button--grey">Post 5</g-link>
     </p>
 
     <h1>Blog posts</h1>
@@ -31,7 +30,7 @@ export default {
     }
   },
   async mounted() {
-    const response = await fetch(`http://portfolio.dev.local:9200/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra`)
+    const response = await fetch(`http://portfolio.dev.local:9200/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra,slug`)
 
     const posts = await response.json()
     this.posts = posts.items

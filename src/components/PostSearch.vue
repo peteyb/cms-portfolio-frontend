@@ -2,7 +2,7 @@
   <v-select 
     v-model="form.selectedPost" 
     label="title"
-    index="id"
+    index="meta.slug"
     placeholder="Search for post"
     :noDrop="searchLength < minSearchLength"
     :options="picker_list"
@@ -37,7 +37,7 @@ export default {
   methods: {
     select() {
       if (this.form.selectedPost) {
-        this.$router.push({ path: `/posts/${this.form.selectedPost.id}` })
+        this.$router.push({ path: `/posts/${this.form.selectedPost.meta.slug}` })
         this.clearForm()
       }
     },
