@@ -4,6 +4,11 @@
 
     <p>A proof of concept site to experiment with Gridsome and Wagtail to create a SSG JAMstack site</p>
 
+    <p class="home-links">
+      <g-link to="/" class="button--grey">Home page</g-link>
+      <g-link to="/posts/" class="button--grey">Posts page</g-link>
+    </p>
+    
     <p>
       Concepts:
 
