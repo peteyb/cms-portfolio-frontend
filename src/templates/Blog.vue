@@ -19,5 +19,3 @@
   color: orangered;
 }
 </style>
-
-// todo - load db content via api on published pages
