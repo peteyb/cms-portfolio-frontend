@@ -17,5 +17,7 @@
         width="300" 
         crop="scale" />
     </div>
+
+    <p><g-link to="/posts/" class="button--grey">Return to blog</g-link></p>
   </Layout>
 </template>
