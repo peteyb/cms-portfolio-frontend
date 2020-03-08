@@ -3,8 +3,10 @@ import { get } from '@/services/wagtail';
 import { createAsyncMutation } from '@/store/mutation-types';
 
 const GET_PICKER_LIST_ASYNC = createAsyncMutation('GET_PICKER_LIST')
+const GET_POST_EXTRA_ASYNC = createAsyncMutation('GET_POST_EXTRA')
 
 const state = {
+	extra: [],
 	picker_list: [],
 }
 
@@ -28,6 +30,14 @@ const mutations = {
 			state.picker_list = []
 		}
 	},
+
+	[GET_POST_EXTRA_ASYNC.SUCCESS] (state, payload) {
+    state.extra = payload.extra
+		Vue.delete(state, [GET_POST_EXTRA_ASYNC.errorKey])
+	},
+	[GET_POST_EXTRA_ASYNC.FAILURE] (state, error) {
+		Vue.set(state, [GET_POST_EXTRA_ASYNC.errorKey], error)
+	},
 }
 
 const actions = {
@@ -37,7 +47,6 @@ const actions = {
 			fields: '_,slug,title',
 			search: payload.query
 		}
-		// change to getAll if more than 10 results required in display
 		await get(commit, {
 			url: `/api/v2/pages/`,
 			mutationTypes: GET_PICKER_LIST_ASYNC,
@@ -46,6 +55,16 @@ const actions = {
 	},
 	async clearPosts({commit}, payload) {
 		commit('clearPostPicker', payload);
+	},
+	async fetchPost({commit}, payload) {
+		let params = {
+			fields: '_,extra',
+		}
+		await get(commit, {
+			url: `/api/v2/pages/${payload}/`,
+			mutationTypes: GET_POST_EXTRA_ASYNC,
+			payload: {params: params}
+    })
 	},
 }
 

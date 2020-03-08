@@ -20,27 +20,20 @@
 </template>
 
 <script>
-import PostExtraContent from '@/components/PostExtraContent.vue';
+import { mapState } from 'vuex'
+import PostExtraContent from '@/components/PostExtraContent.vue'
 
 export default {
   components: {
     PostExtraContent
   },
-  data() {
-    return {
-      extra: null
-    }
+  computed: {
+    ...mapState('post', ['extra',])
   },
   async mounted() {
     let token = localStorage.getItem('token')
     if (token && this.$context.restricted) {
-      const response = await fetch(
-        `http://portfolio.dev.local:9200/api/v2/pages/${this.$context.id}/?fields=_,extra`, {
-          headers: { 'Authorization' : `Token ${token}`}
-        })
-
-      const data = await response.json()
-      this.extra = data.extra
+      this.$store.dispatch('post/fetchPost', this.$context.id)
     }
   }
 }
