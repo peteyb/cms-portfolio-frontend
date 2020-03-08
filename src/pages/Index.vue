@@ -9,7 +9,7 @@
       <g-link to="/posts/" class="button--grey">Posts page</g-link>
     </p>
     
-    <p>
+    <div>
       Concepts:
 
       <ol>
@@ -31,7 +31,7 @@
         <li>Updated Gridsome to pre-render all pages but only display extra content on public pages</li>
         <li>Updated Gridsome to dynamically load extra content on private pages where user is authenticated</li>
       </ol>
-    </p>
+    </div>
 
     <p class="home-links">
       <g-link to="/" class="button--grey">Home page</g-link>
