@@ -57,7 +57,7 @@ module.exports = function (api) {
   })
 
   api.createManagedPages(async ({ createPage }) => {
-    const data = await getAll(`/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra,slug`)
+    const data = await getAll(`/api/v2/pages/?type=blog.BlogPage&fields=_,id,title,body,extra,slug,restricted`)
 
     createPage({
       path: `/posts`,
@@ -74,6 +74,8 @@ module.exports = function (api) {
         path: `/posts/${item.meta.slug}`,
         component: './src/templates/Post.vue',
         context: {
+          restricted: item.restricted.length > 0,
+          id: item.id,
           title: item.title,
           body: item.body,
           extra: item.extra,
