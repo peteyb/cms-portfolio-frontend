@@ -3,7 +3,7 @@
     v-model="form.selectedPost" 
     label="title"
     index="meta.slug"
-    placeholder="Search for post"
+    placeholder="Search for a post"
     :noDrop="searchLength < minSearchLength"
     :options="picker_list"
     :filterable="false"
